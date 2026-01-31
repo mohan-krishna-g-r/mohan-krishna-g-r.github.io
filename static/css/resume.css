@@ -1,0 +1,117 @@
+/* Resume Viewer Container */
+#canvas-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Controls Header */
+.resume-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: white;
+}
+
+.resume-controls button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resume-controls button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.resume-controls span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+
+.zoom-controls {
+    display: flex;
+    gap: 5px;
+    margin-left: 10px;
+    padding-left: 15px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* PDF Wrapper & Layers */
+#pdf-wrapper {
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    /* Ensure it doesn't overflow on small screens */
+    max-width: 100%;
+    overflow: auto; 
+}
+
+#resume-render {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Layers overlay */
+#text-layer, #annotation-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    line-height: 1.0;
+}
+
+/* Text Layer Specifics for Selection */
+.textLayer {
+    opacity: 0.2; /* Make text invisible but selectable */
+    mix-blend-mode: multiply;
+}
+
+.textLayer span {
+    color: transparent;
+    position: absolute;
+    white-space: pre;
+    cursor: text;
+    transform-origin: 0% 0%;
+}
+
+::selection {
+    background: rgba(0, 111, 255, 0.3);
+}
+
+/* Links in Annotation Layer */
+.linkAnnotation {
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.linkAnnotation:hover {
+    background: rgba(255, 255, 0, 0.2); /* Highlight links on hover */
+    border: 1px solid rgba(255, 255, 0, 0.5);
+}

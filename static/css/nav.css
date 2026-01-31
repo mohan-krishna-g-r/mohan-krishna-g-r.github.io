@@ -1,0 +1,132 @@
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 1.5rem 0;
+    background: rgba(10, 25, 47, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+  }
+  
+  .nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    width: 100%;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 3rem;
+  }
+  
+  .nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    position: relative;
+    padding: 5px 0;
+  }
+  
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+  /*  */
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--primary);
+    margin: 5px 0;
+    transition: 0.3s;
+  }
+  
+  /* Mobile Styles */
+  /* Modify your mobile media query */
+  @media (max-width: 768px) {
+  
+      .nav {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    .hamburger {
+      display: block;
+      position: relative;
+      right: 0;
+      padding: 10px 15px;
+    }
+  
+    .nav-links {
+      display: flex !important; /* Force display */
+      visibility: hidden; /* Start hidden */
+      opacity: 0; /* Start transparent */   
+      position: fixed;
+      top: 72px; /* Adjusted to match nav height */
+      height: calc(100vh - 72px); /* Full height minus nav */
+      flex-direction: column;
+      background: rgba(10, 25, 47, 0.95);
+      text-align: center;
+      padding: 2rem 0;
+      transition: 0.3s;
+      gap: 1.5rem;
+      z-index: 1000; 
+      width: 100vw;
+      right: -100vw;
+    }
+  
+    .nav-links.active {
+      visibility: visible;
+      opacity: 1;
+      right: 0;
+    }
+  
+    .nav-content {
+      padding: 0 1.5rem;
+      width: 100vw;
+    }
+  }
+  /* Optional: Hamburger Animation */
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  
